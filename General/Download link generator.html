@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>RSGmaker's download link generator.</title>
+</head>
+<body>
+<H1>Download link generator.</H1>
+<a id="Link" style="visibility:hidden" href="" download>Click here to download.</a>
+<div id="Editor" style="visibility:visible">
+	URL to download:<input id="URL" type="text" onchange="var d = document.getElementById('export');var TD = location.search.split('?')[0];var nurl = TD+this.value;d.innerHTML=nurl;window.history.pushState('', '', '?url='+nurl);"/>
+	<br/>
+	<div id="export"></div>
+	<br/>
+	This page provides a link that downloads the url, instead of opening it.
+</div>
+</body>
+<script>
+if (location.search.indexOf("?") > -1){
+		var TD = location.search.split('?')[1].split("&");
+		var ji = 0;
+		while (ji<TD.length)
+		{
+			var TTD = TD[ji].split("=");
+			if (TTD[0]=="url")
+			{
+				var a = document.getElementById("Link");
+				a.style.visibility = "visible";
+				a.href = TTD[1];
+				var e = document.getElementById("Editor");
+				a.style.visibility = "hidden";
+			}
+			ji = ji + 1;
+		}
+	}
+</script>
+</html>
