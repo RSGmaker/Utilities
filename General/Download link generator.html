@@ -6,9 +6,11 @@
 <H1>Download link generator.</H1>
 <a id="Link" style="visibility:hidden" href="#" download>Click here to download.</a>
 <div id="Editor" style="visibility:visible">
-	URL to download:<input id="URL" type="text" onchange="var d = document.getElementById('export');var TD = location.search.split('?')[0];var nurl = TD+this.value;d.innerHTML=nurl;window.history.pushState('', '', '?url='+nurl);"/>
+	URL to download:<input id="URL" type="text" onchange="var d = document.getElementById('export');var TD = location.search.split('?')[0];var nurl = TD+this.value;d.innerHTML=location.origin+location.pathname+'?url='+nurl;d.href=d.innerHTML;window.history.pushState('', '', '?url='+nurl);"/>
 	<br/>
-	<div id="export"></div>
+	Share link:
+	<a id="export"></a>
+	<br/>
 	<br/>
 	This page provides a link that downloads the url, instead of opening it.
 </div>
